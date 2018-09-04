@@ -1,2 +1,12 @@
 Chung
 FB : Chung Bảo
+
+react-native -v // kiểm tra version
+react-native init App1 --version react-native@0.55.4 // tạo project
+
+cd AppFolder
+
+npm install
+adb devices
+
+react-native run-android
