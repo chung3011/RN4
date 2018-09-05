@@ -9,7 +9,7 @@ class App extends Component {
       <View style={styles.box}>
         <View style={styles.headerBox}>
           <Text style={{
-            fontSize: 30,
+            fontSize: 35,
             color: 'white',
             marginBottom: '8%'
           }}>Schedule</Text>
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   img: {
     width: '60%',
-    height: '30%',
+    height: '32%',
     aspectRatio: 1,
     margin: '2%',
     tintColor: 'white'
