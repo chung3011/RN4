@@ -4,21 +4,8 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 export default class Match extends Component {
     render() {
         return (
-            <View style={{
-                margin: '2%',
-                width: '80%',
-                height: '22%',
-                borderRadius: 12,
-                backgroundColor: '#3E4659',
-                justifyContent: 'center',
-                alignItems: 'center',
-            }}>
-                <View style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: '30%'
-                }}>
+            <View style={styles.box}>
+                <View style={styles.timeBox}>
                     <Text style={{
                         fontSize: 12,
                         color: 'white'
@@ -26,55 +13,22 @@ export default class Match extends Component {
                         {this.props.time}
                     </Text>
                 </View>
-                <View style={{
-                    flexDirection: 'row',
-                    justifyContent: 'space-around',
-                    alignItems: 'center',
-                    width: '100%',
-                    height: '60%'
-                }}>
-                    <View style={{
-                        flex: 1,
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}>
-                        <Text style={{
-                            fontSize: 15,
-                            color: 'white'
-                        }}>
+                <View style={styles.matchBox}>
+                    <View style={styles.teamBox}>
+                        <Text style={styles.teamText}>
                             {this.props.team1}
                         </Text>
                     </View>
-                    <View style={{
-                        flex: 1,
-                        justifyContent: 'space-around',
-                        alignItems: 'center',
-                        flexDirection: 'row'
-                    }}>
+                    <View style={styles.flagBox}>
                         <Image
-                            style={{
-                                width: '30%',
-                                height: '30%',
-                                aspectRatio: 1
-                            }}
+                            style={styles.flagImage}
                             source={{ uri: this.props.imageTeam1 }} />
                         <Image
-                            style={{
-                                width: '30%',
-                                height: '30%',
-                                aspectRatio: 1
-                            }}
+                            style={styles.flagImage}
                             source={{ uri: this.props.imageTeam2 }} />
                     </View>
-                    <View style={{
-                        flex: 1,
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}>
-                        <Text style={{
-                            fontSize: 15,
-                            color: 'white'
-                        }}>
+                    <View style={styles.teamBox}>
+                        <Text style={styles.teamText}>
                             {this.props.team2}
                         </Text>
                     </View>
@@ -83,3 +37,47 @@ export default class Match extends Component {
         );
     }
 }
+const styles = StyleSheet.create({
+    matchBox: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        width: '100%',
+        height: '60%'
+    },
+    timeBox: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: '30%'
+    },
+    teamBox: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    teamText: {
+        fontSize: 15,
+        color: 'white'
+    },
+    flagBox: {
+        flex: 1,
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        flexDirection: 'row'
+    },
+    flagImage: {
+        width: '30%',
+        height: '30%',
+        aspectRatio: 1
+    },
+    box: {
+        margin: '2%',
+        width: '80%',
+        height: '22%',
+        borderRadius: 12,
+        backgroundColor: '#3E4659',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+  });

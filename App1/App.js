@@ -6,29 +6,14 @@ class App extends Component {
   state = {}
   render() {
     return (
-      <View style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#282F37',
-      }}>
-        <View style={{
-          flex: 3,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
+      <View style={styles.box}>
+        <View style={styles.headerBox}>
           <Text style={{
             fontSize: 30,
             color: 'white',
             marginBottom: '8%'
           }}>Schedule</Text>
-          <Image style={{
-            width: '60%',
-            height: '30%',
-            aspectRatio: 1,
-            margin: '2%',
-            tintColor: 'white'
-          }}
+          <Image style={styles.img}
             source={{ uri: 'http://icons-for-free.com/free-icons/png/512/300768.png' }}
             />
           <Text style={{
@@ -37,12 +22,7 @@ class App extends Component {
             marginTop: '8%'
           }}>FIFA WORLDCUP 2018</Text>
         </View>
-        <View style={{
-          flex: 3,
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: '#282F37'
-        }}>
+        <View style={styles.matchBox}>
           <Match
             time={'Jul 6 2018 - 21:00'}
             team1={'Uruguay'}
@@ -69,5 +49,30 @@ class App extends Component {
     );
   }
 }
-
+const styles = StyleSheet.create({
+  matchBox: {
+    flex: 3.5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#282F37'
+  },
+  headerBox: {
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  box: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#282F37',
+  },
+  img: {
+    width: '60%',
+    height: '30%',
+    aspectRatio: 1,
+    margin: '2%',
+    tintColor: 'white'
+  },
+});
 export default App;
