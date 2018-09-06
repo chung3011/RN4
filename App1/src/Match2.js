@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
     },
     box: {
         margin: '2%',
-        width: '80%',
-        height: '22%',
+        width: 300,
+        height: 70,
         borderRadius: 12,
         backgroundColor: '#3E4659',
         justifyContent: 'center',

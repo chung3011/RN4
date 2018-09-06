@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#282F37'
   },
   headerBox: {
-    flex: 3,
+    flex: 4,
     justifyContent: 'center',
     alignItems: 'center',
   },
