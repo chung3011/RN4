@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
 export default class Match extends Component {
+    state = {}
     render() {
         return (
             <View style={styles.box}>
@@ -10,26 +11,26 @@ export default class Match extends Component {
                         fontSize: 12,
                         color: 'white'
                     }}>
-                        {this.props.time}
+                        {this.props.match.time}
                     </Text>
                 </View>
                 <View style={styles.matchBox}>
                     <View style={styles.teamBox}>
                         <Text style={styles.teamText}>
-                            {this.props.team1}
+                            {this.props.match.name[0]}
                         </Text>
                     </View>
                     <View style={styles.flagBox}>
                         <Image
                             style={styles.flagImage}
-                            source={{ uri: this.props.imageTeam1 }} />
+                            source={{ uri: this.props.match.image[0] }} />
                         <Image
                             style={styles.flagImage}
-                            source={{ uri: this.props.imageTeam2 }} />
+                            source={{ uri: this.props.match.image[1] }} />
                     </View>
                     <View style={styles.teamBox}>
                         <Text style={styles.teamText}>
-                            {this.props.team2}
+                            {this.props.match.name[1]}
                         </Text>
                     </View>
                 </View>

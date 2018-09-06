@@ -1,0 +1,41 @@
+{
+    "data": [
+        {
+            "id": "1",
+            "time": "Jul 6 2018 - 21:00",
+            "name": [
+                "Uruguay",
+                "France"
+            ],
+            "image": [
+                "https://png.icons8.com/color/100/000000/uruguay.png",
+                "https://png.icons8.com/color/100/000000/france.png"
+            ]
+        },
+        {
+            "id": "2",
+            "time": "Jul 7 2018 - 01:00",
+            "name": [
+                "Brazil",
+                "Belgium"
+            ],
+            "image": [
+                "https://png.icons8.com/color/100/000000/brazil.png",
+                "https://png.icons8.com/color/100/000000/belgium.png"
+            ]
+        },
+        {
+            "id": "3",
+            "time": "Jul 8 2018 - 01:00",
+            "name": [
+                "Russia",
+                "Croatia"
+            ],
+            "image": [
+                "https://png.icons8.com/color/100/000000/russian-federation.png",
+                "https://png.icons8.com/color/100/000000/croatia.png"
+            ]
+        },
+
+    ]
+}
