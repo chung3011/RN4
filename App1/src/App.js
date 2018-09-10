@@ -29,6 +29,8 @@ class App extends Component {
           <FlatList
             data={data}
             renderItem={this.renderItem}
+            keyExtractor={(item) => item.id.toString()}
+            
           />
         </View>
       </View>
