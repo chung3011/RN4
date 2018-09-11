@@ -1,31 +1,36 @@
 import React, { Component } from 'react';
-import {  Text,  View,} from 'react-native';
+import { Text, View, } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import Orientation from 'react-native-orientation';
 
-import ComicListScreen from './ComicListScreen';
-import ComicDetailScreen from './ComicDetailScreen';
+import CakeListScreen from './CakeListScreen'
+import CakeDetailScreen from './CakeDetailScreen'
 
 const Navigation = createStackNavigator({
-  ComicList: {
-    screen: ComicListScreen,
-    navigationOptions: ({ navigation }) => {
+  CakeList: {
+    screen: CakeListScreen,
+    navigationOptions: () => {
       return {
-        title: 'Comics',
-      }
+        title: 'Cakes',
+      };
     }
   },
-  ComicDetail: {
-    screen: ComicDetailScreen
+  CakeDetail: {
+    screen: CakeDetailScreen,
+    navigationOptions: ({ navigation }) => {
+      return {
+        title: navigation.getParam('cake').type,
+      };
+    }
   }
+
 })
 
 class App extends Component {
   state = {}
 
   render() {
-    Orientation.lockToPortrait() // khóa màn hình dọc
-
+    
     return (
       <View style={{ backgroundColor: 'rgb(230, 230, 230)', flex: 1 }}>
         <Navigation />
@@ -35,3 +40,5 @@ class App extends Component {
 }
 
 export default App;
+
+

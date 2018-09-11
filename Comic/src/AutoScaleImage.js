@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import {  Text, Image, Dimensions,  View } from 'react-native';
+import {
+  Text, Image, Dimensions,
+  View,
+} from 'react-native';
 
 class AutoScaleImage extends Component {
   state = {
