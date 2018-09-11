@@ -2,7 +2,7 @@
     "data": [
         {
             "type": "Donuts",
-            "photo": "http://pic.90sjimg.com/design/00/31/67/18/58d895a29f554.png",
+            "photo": "https://cdn0.iconfinder.com/data/icons/shift-food-drinks/32/Donut-512.png",
             "color": "#f46388",
             "names": [
                 "Double Chocolate",
@@ -13,7 +13,7 @@
         },
         {
             "type": "Cupcakes",
-            "photo": "https://vignette.wikia.nocookie.net/austinally/images/f/ff/Cartoon_cupcake.png/revision/latest?cb=20130519134711",
+            "photo": "https://github.com/chung3011/RN4/blob/master/cake/image/cupcake.png?raw=true",
             "color": "#f3b2f6",
             "names": [
                 "Chocolate Coconut Cream Pie",
@@ -25,7 +25,7 @@
         },
         {
             "type": "Pastries",
-            "photo": "https://cdn1.iconfinder.com/data/icons/thanksgiving-day-cartoon/512/g3795-512.png",
+            "photo": "https://github.com/chung3011/RN4/blob/master/cake/image/pastry.png?raw=true",
             "color": "#ff755e",
             "names": [
                 "Boston cream pie",

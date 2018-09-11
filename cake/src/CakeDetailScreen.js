@@ -8,12 +8,14 @@ export default class CakeDetailScreen extends Component {
         return (
             <View>
                 <CakeInfo cake={cake} />
-                <FlatList
-                    style={styles.CakeListScreen}
-                    data={cake.names}
-                    renderItem={({ item }) => <Text style={{ color: cake.color, paddingTop: 3, paddingLeft: 10, fontWeight: 'bold', fontSize: 20 }}>{item}</Text>}
-                    keyExtractor={(item) => item}
-                />
+                    <View style={{ justifyContent: 'center',alignItems: "center" }}>
+                        <FlatList
+                            style={styles.CakeListScreen}
+                            data={cake.names}
+                            renderItem={({ item }) => <Text style={[styles.Text,{ color: cake.color}]}>{item}</Text>}
+                            keyExtractor={(item) => item}
+                        />
+                    </View>
             </View>
         )
     }
@@ -23,7 +25,13 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 10,
         margin: 10,
-
+        width: "90%"
+    },
+    Text: {
+        paddingTop: 3,
+        paddingLeft: 10,
+        fontWeight: 'bold',
+        fontSize: 20
     }
 
 })
