@@ -5,7 +5,7 @@ import { Text, StyleSheet, View, Image, Dimensions } from 'react-native'
 export default class CakeInfo extends Component {
     render() {
         return (
-            <View style={{ justifyContent: 'center',alignItems: "center" }}>
+            <View style={{ justifyContent: 'center', alignItems: "center" }}>
                 <View style={[styles.box, { backgroundColor: this.props.cake.color }]}>
                     <Image
                         style={styles.image}

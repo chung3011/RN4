@@ -8,14 +8,14 @@ export default class CakeDetailScreen extends Component {
         return (
             <View>
                 <CakeInfo cake={cake} />
-                    <View style={{ justifyContent: 'center',alignItems: "center" }}>
-                        <FlatList
-                            style={styles.CakeListScreen}
-                            data={cake.names}
-                            renderItem={({ item }) => <Text style={[styles.Text,{ color: cake.color}]}>{item}</Text>}
-                            keyExtractor={(item) => item}
-                        />
-                    </View>
+                <View style={{ justifyContent: 'center', alignItems: "center" }}>
+                    <FlatList
+                        style={styles.CakeListScreen}
+                        data={cake.names}
+                        renderItem={({ item }) => <Text style={[styles.Text, { color: cake.color }]}>{item}</Text>}
+                        keyExtractor={(item) => item}
+                    />
+                </View>
             </View>
         )
     }

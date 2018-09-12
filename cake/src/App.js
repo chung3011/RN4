@@ -30,7 +30,7 @@ class App extends Component {
   state = {}
 
   render() {
-    
+
     return (
       <View style={{ backgroundColor: 'rgb(230, 230, 230)', flex: 1 }}>
         <Navigation />
