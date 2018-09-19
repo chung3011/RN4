@@ -57,5 +57,3 @@ export default class WeatherDetail extends Component {
         )
     }
 }
-
-const styles = StyleSheet.create({})
