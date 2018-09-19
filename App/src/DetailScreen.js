@@ -7,15 +7,15 @@ import {
 class DetailScreen extends Component {
     state = {}
     render() {
+        const food = this.props.navigation.getParam('food')
         return (
             <View style={{ justifyContent: 'center', alignItems: "center" }}>    
                 
                 <Image
                     style={styles.image}
-                    source={{ uri: this.props.navigation.getParam('recipe').image_url }} />
-                <Text style={styles.text}>{this.props.navigation.getParam('recipe').publisher}</Text>
-                <Text style={styles.text}>Social Rank:{this.props.navigation.getParam('recipe').social_rank}</Text>
-                <Text style={styles.text}>Detail: {this.props.navigation.getParam('recipe').f2f_url}</Text>
+                    source={{ uri: this.props.navigation.getParam('food').image }} />
+                <Text style={styles.text}>{this.props.navigation.getParam('food').caption}</Text>
+                
             
             </View>
 

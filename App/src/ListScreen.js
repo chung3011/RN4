@@ -14,10 +14,10 @@ class ListScreen extends Component {
     }
 
     componentDidMount() {
-        axios.get(`https://www.food2fork.com/api/search?key=18f2490acab432b1b292d281c510ff42`)
+        axios.get(`https://latte.lozi.vn/v1.2/topics/1/photos?t=popular&cityId=1`)
             .then(res =>
                 this.setState({
-                    data: res.data.recipes,
+                    data: res.data.data,
                     loading: false
                 })
             )
@@ -25,7 +25,7 @@ class ListScreen extends Component {
     }
     renderItem = (data) => {
         return <Item
-            recipe={data.item}
+            food={data.item}
             navigation={this.props.navigation} />
     }
 
@@ -39,7 +39,7 @@ class ListScreen extends Component {
                         renderItem={this.renderItem}
                         numColumns={2}
                         keyExtractor={(item) => {
-                            return item.recipe_id
+                            return item._id
                         }}
                     />
                 }

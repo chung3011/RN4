@@ -11,13 +11,13 @@ class Item extends Component {
             <TouchableOpacity
                 style={styles.container}
                 onPress={() => this.props.navigation.navigate('Detail', {
-                    recipe: this.props.recipe
+                    food: this.props.food
                 })}>
                 <Image
                     style={styles.image}
-                    source={{ uri: this.props.recipe.image_url }} />
+                    source={{ uri: this.props.food.image}} />
                 <Text style={styles.text}
-                    numberOfLines={2}>{this.props.recipe.title}</Text>
+                    numberOfLines={2}>{this.props.food.dish.foodName}</Text>
             </TouchableOpacity>
         );
     }

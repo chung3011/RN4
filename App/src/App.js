@@ -10,7 +10,7 @@ const Navigation = createStackNavigator({
     screen: ListScreen,
     navigationOptions: ({ navigation }) => {
       return {
-        title: 'Recipe',
+        title: 'Food',
       }
     }
   },
@@ -18,7 +18,7 @@ const Navigation = createStackNavigator({
     screen: DetailScreen,
     navigationOptions: ({ navigation }) => {
       return {
-        title: navigation.getParam('recipe').title,
+        title: navigation.getParam('food').title,
       };
     }
   }
