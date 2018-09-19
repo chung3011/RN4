@@ -3,7 +3,7 @@ import { Text, StyleSheet, View, FlatList } from 'react-native'
 import WeatherItem from './WeatherItem';
 
 
-export default class ListWeathers extends Component {
+export default class WeatherList extends Component {
 
     render() {
         return (
@@ -17,5 +17,3 @@ export default class ListWeathers extends Component {
         )
     }
 }
-
-const styles = StyleSheet.create({})
