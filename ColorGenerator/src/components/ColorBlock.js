@@ -7,8 +7,8 @@ import { connect } from 'react-redux'
 class ColorBlock extends Component {
     render() {
         return (
-            <View style={{ flexDirection: 'column' }}>
-                <View style={[styles.colorView, {
+            <View style={{ flexDirection: 'column' ,backgroundColor: 'rgb(222, 226, 232)'}}>
+                <View style={[styles.ColorBlock, {
                     backgroundColor: `rgb(${this.props.currentColor[0].number},${this.props.currentColor[1].number},${this.props.currentColor[2].number})`}]}>
                 </View>
                 <Text style={styles.text}>
@@ -20,9 +20,9 @@ class ColorBlock extends Component {
 }
 
 const styles = StyleSheet.create({
-    colorView: {
+    ColorBlock: {
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height/2
+        height: Dimensions.get('window').height / 2
     },
     text: {
         fontSize: 20,
