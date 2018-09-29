@@ -9,6 +9,9 @@ import { calendarBackground, calendarHighlight } from '../styles';
 import ItemDate from '../components/ItemDate';
 import ItemTask from '../components/ItemTask';
 
+import { connect } from 'react-redux'
+import { addTask } from '../actions'
+
 import { data } from '../database.json';
 
 class ScheduleScreen extends Component {
@@ -31,7 +34,7 @@ class ScheduleScreen extends Component {
         <SectionList
           renderItem={this.renderItem}
           renderSectionHeader={this.renderSectionHeader}
-          sections={data}
+          sections={this.props.tasks}
           keyExtractor={(item) => item.id} />
       </View>
     );
@@ -49,4 +52,6 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ScheduleScreen;
+const mapStateToProps = ({tasks})=> ({tasks})
+
+export default connect(mapStateToProps)(ScheduleScreen);

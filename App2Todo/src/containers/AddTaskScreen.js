@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   Text, StyleSheet, Platform,
-  View, TextInput, TouchableOpacity
+  View, TextInput, TouchableOpacity,Button
 } from 'react-native';
 import CalendarStrip from 'react-native-calendar-strip';
 import TimePicker from 'react-native-modal-datetime-picker';
@@ -9,6 +9,8 @@ import { calendarBackground, calendarHighlight } from '../styles';
 import ItemDate from '../components/ItemDate';
 import { categoryShopping, categoryTodo, categoryBirthday, categoryEvent, categoryPersonal } from '../styles';
 import PickCategory from '../components/PickCategory';
+import { connect } from 'react-redux'
+import { addTask } from '../actions'
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -60,9 +62,24 @@ class AddTaskScren extends Component {
         <PickCategory
           onPick={(currentCategory) => this.setState({
             currentCategory
-        })}
+          })}
         />
-        <Text>{`This task ${this.state.currentCategory}`}</Text>
+        <Text>{`This task ${this.props.currentCategory}`}</Text>
+        <Button
+          title='add'
+          onPress={() => this.props.addTask({
+            id: 1,
+            date: "Friday 22 June 2018",
+            task: {
+              id: 1234,
+              category: "Personal",
+              content: "Go to New York",
+              time: "09:00"
+            }          
+          })}
+        >
+
+        </Button>
       </View>
     );
   }
@@ -111,4 +128,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddTaskScren;
+// tạo 1 props cho AddTaskScreen
+// props 'category', giá trị bằng store.currentCategory
+//const mapStateToProps = (store) => ({category: store.currentCategory})
+const mapStateToProps = ({ currentCategory }) => ({ currentCategory })
+
+
+export default connect(mapStateToProps, { addTask })(AddTaskScren);

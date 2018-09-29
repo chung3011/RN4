@@ -4,6 +4,10 @@ import {
   View, TouchableOpacity, Image
 } from 'react-native';
 
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import rootReducer from '../reducers'
+
 import { createStackNavigator } from 'react-navigation'
 import ScheduleScreen from './ScheduleScreen';
 import AddTaskScreen from './AddTaskScreen';
@@ -64,11 +68,15 @@ const Navigation = createStackNavigator({
   }
 })
 
+const store = createStore(rootReducer)
 class App extends Component {
   state = {}
   render() {
     return (
-      <Navigation />
+      <Provider store = {store}>
+        <Navigation />
+      </Provider>
+
     );
   }
 }
