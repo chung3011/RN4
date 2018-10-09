@@ -10,12 +10,18 @@ import ListScreen from './ListScreen';
 import DetailScreen from './DetailScreen';
 import ListFilmScreen from './ListFilmScreen';
 
+import { YellowBox } from 'react-native';
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
+
 const Navigation = createStackNavigator({
   List: {
     screen: ListScreen,
     navigationOptions: ({ navigation }) => {
       return {
-        title: 'Film',
+        title: 'Cinema',
+        headerStyle: {
+          backgroundColor: '#FAF6EA',
+        },
       }
     }
   },
@@ -23,7 +29,11 @@ const Navigation = createStackNavigator({
     screen: DetailScreen,
     navigationOptions: ({ navigation }) => {
       return {
-        title: navigation.getParam('film').title,
+        //title: navigation.getParam('film').title,
+        title: 'Movie\'s Detail',
+        headerStyle: {
+          backgroundColor: '#FAF6EA',
+        },
       };
     }
   },
@@ -45,7 +55,7 @@ class App extends Component {
   render() {
 
     return (
-      <Provider store={store} style={{ backgroundColor: 'rgb(230, 230, 230)', flex: 1 }}>
+      <Provider store={store} style={{ backgroundColor: '#FAF6EA', flex: 1 }}>
         <Navigation />
       </Provider>
     );

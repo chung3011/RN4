@@ -10,9 +10,9 @@ import { connect } from 'react-redux'
 class ListFilmScreen extends Component {
     state = {}
 
-    renderItem = (data) => {
+    renderItem = ({ item }) => {
         return <Item
-            film={data.item}
+            films={item}
             navigation={this.props.navigation} />
     }
 
@@ -22,7 +22,7 @@ class ListFilmScreen extends Component {
                 {this.state.loading
                     ? <ActivityIndicator></ActivityIndicator>
                     : <FlatList
-                        data={this.props.films}
+                        data={this.state.films}
                         renderItem={this.renderItem}
                         numColumns={2}
                     />

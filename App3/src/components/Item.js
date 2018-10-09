@@ -9,12 +9,6 @@ import { addFilm } from '../actions'
 
 class Item extends Component {
     state = {}
-    addFilm = () => {
-        this.props.addFilm({
-            seen: this.props.film.title,
-            image: this.props.film.poster_path
-        })
-    }
     render() {
         return (
             <TouchableOpacity
@@ -22,7 +16,9 @@ class Item extends Component {
                 onPress={() => this.props.navigation.navigate('Detail', {
                     film: this.props.film
                 })}
-                onLongPress={() => this.props.navigation.navigate('ListFilm')
+                onLongPress={() => this.props.navigation.navigate('ListFilm', {
+                    films: this.props.films
+                })
                 }
             >
                 <Image
@@ -44,24 +40,25 @@ class Item extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'row',
-        height: 100,
+        height: Dimensions.get('window').height*0.3,
         width: Dimensions.get('window').width,
-        padding: 10
+        padding: 8
     },
     image: {
-        flex: 1,
+        flex: 4,
+        borderRadius: 5,
+        marginHorizontal:5
     },
     box: {
-        flex: 3,
-        marginLeft: 15
+        flex: 1,
+        marginLeft: 8
     },
     text: {
-        fontSize: 15,
-        fontWeight: 'bold', 
+        fontSize: 12,
+        fontWeight: 'bold',
     },
     text2: {
-        fontSize: 10,
+        fontSize: 8,
     }
 })
 
