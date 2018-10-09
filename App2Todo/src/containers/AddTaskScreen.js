@@ -14,12 +14,18 @@ import { addTask } from '../actions'
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
 class AddTaskScren extends Component {
   state = {
     selectedDate: this.getDateStringFromDateObj(new Date()),
     isTimePickerVisible: false,
     selectedTime: new Date().toTimeString().substring(0, 5),
-    currentCategory: 'To do'
+    currentCategory: 'To do',
+    // number of days from 1/1/1970
+    dayId: Math.floor(new Date().getTime()/(24*60*60*1000)),
+    // number of second from 1/1/1970
+    taskId: new Date().getTime(),
+    content:''
   }
 
   getDateStringFromDateObj(date) {
@@ -27,8 +33,39 @@ class AddTaskScren extends Component {
   }
 
   onDateSelected = (date) => {
-    this.setState({ selectedDate: this.getDateStringFromDateObj(date._d) })
+    this.setState({
+      selectedDate: this.getDateStringFromDateObj(date._d),
+      dayId: Math.floor(date._d.getTime()/(24*60*60*1000))
+    })
   }
+  componentDidMount() {
+    this.props.navigation.setParams({ addTask: this.handleAddTask });
+  }
+  
+  chooseColorByCateegory = (category) => {
+    switch (category) {
+      case 'To do': return categoryTodo
+      case 'Shopping': return categoryShopping
+      case 'Birthday': return categoryBirthday
+      case 'Event': return categoryEvent
+      case 'Personal': return categoryPersonal
+    }
+  }
+  handleAddTask = () => {
+    this.props.addTask({
+      id: this.state.dayId,
+      date: this.state.selectedDate,
+      task: {
+        id: this.state.taskId,
+        category: this.props.currentCategory,
+        content: this.state.content,
+        time: this.state.selectedTime,
+        isDone: false
+      }
+    })
+    this.props.navigation.navigate('Schedule')
+  }
+  
   render() {
 
     return (
@@ -40,10 +77,15 @@ class AddTaskScren extends Component {
           highlightDateNameStyle={{ color: calendarHighlight }}
           onDateSelected={this.onDateSelected}
         />
+
         <ItemDate date={this.state.selectedDate} />
+
         <Text style={styles.title}>Content</Text>
         <TextInput underlineColorAndroid='rgba(0,0,0,0)'
-          style={styles.input} />
+          style={styles.input}
+        onChangeText={(content)=> this.setState({content})}
+        />
+
         <Text style={styles.title}>Time</Text>
         <TouchableOpacity
           onPress={() => this.setState({ isTimePickerVisible: true })}>
@@ -54,32 +96,24 @@ class AddTaskScren extends Component {
           onConfirm={(time) => {
             this.setState({
               isTimePickerVisible: false,
-              selectedTime: time.toTimeString().substring(0, 5)
+              selectedTime: time.toTimeString().substring(0, 5),
+              taskId: time.getTime()
             })
           }}
           onCancel={() => this.setState({ isTimePickerVisible: false })} />
+
         <Text style={styles.title}>Category</Text>
-        <PickCategory
+        <PickCategory style={{marginStart: 20}}
           onPick={(currentCategory) => this.setState({
             currentCategory
           })}
         />
-        <Text>{`This task ${this.props.currentCategory}`}</Text>
-        <Button
-          title='add'
-          onPress={() => this.props.addTask({
-            id: 1,
-            date: "Friday 22 June 2018",
-            task: {
-              id: 1234,
-              category: "Personal",
-              content: "Go to New York",
-              time: "09:00"
-            }          
-          })}
-        >
-
-        </Button>
+        <Text style={{
+          fontSize: 18,
+          fontWeight: 'bold',
+          marginHorizontal: 20,
+          color: this.chooseColorByCateegory(this.props.currentCategory)
+        }}>{`This task belongs to ${this.props.currentCategory} category`}</Text>
       </View>
     );
   }

@@ -25,8 +25,6 @@ export default function (color = ColorDefault, action) {
                 ...(color.filter(item => item.color != action.payload.color)),
                action.payload
             ].sort((color1, color2) => color1.id - color2.id)
-
-
         default:
             return color
     }

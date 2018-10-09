@@ -18,7 +18,10 @@ class PickCategory extends Component {
       onPress={()=>this.props.pickCategory(item)}
       // onPress={() => this.props.onPick(item)}
     >
-      <Text>{item}</Text>
+      <Text style={{
+        color: 'white',
+        fontWeight: 'bold'
+      }}>{item}</Text>
     </TouchableOpacity>
   )
   chooseColorByCategory = (item) => {
@@ -34,10 +37,12 @@ class PickCategory extends Component {
     return (
       <View>
         <FlatList
+          style={{ marginHorizontal: 20, marginVertical: 10 }}
           data={categories}
           keyExtractor={(index) => index.toString()}
           renderItem={this.renderItem}
           horizontal={true}
+          showsHorizontalScrollIndicator={false}
         />
 
       </View>

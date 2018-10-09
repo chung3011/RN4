@@ -5,8 +5,10 @@ import {
 } from 'react-native';
 
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import rootReducer from '../reducers'
+//import { createStore } from 'redux'
+//import rootReducer from '../reducers'
+import { PersistGate } from 'redux-persist/integration/react'
+import configureStore from '../configureStore'
 
 import { createStackNavigator } from 'react-navigation'
 import ScheduleScreen from './ScheduleScreen';
@@ -48,7 +50,9 @@ const Navigation = createStackNavigator({
         </TouchableOpacity>,
       headerRight:
         <TouchableOpacity
-          onPress={() => navigation.navigate('Schedule')}>
+          //onPress={() => navigation.navigate('Schedule')}
+          onPress={navigation.getParam('addTask')}
+        >
           <Text style={{
             marginEnd: 10,
             fontWeight: 'bold',
@@ -68,13 +72,18 @@ const Navigation = createStackNavigator({
   }
 })
 
-const store = createStore(rootReducer)
+//const store = createStore(rootReducer)
+const { store, persistor } = configureStore()
 class App extends Component {
   state = {}
   render() {
     return (
-      <Provider store = {store}>
-        <Navigation />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+
+          <Navigation />
+        </PersistGate>
+
       </Provider>
 
     );

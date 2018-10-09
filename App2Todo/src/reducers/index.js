@@ -5,5 +5,5 @@ import taskReducer from './taskReducers'
 
 export default combineReducers({
     currentCategory: categoryReducer,
-    tasks: taskReducer
+    tasks: taskReducer,
 })

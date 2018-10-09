@@ -5,10 +5,15 @@ import {
 } from 'react-native';
 import RoundCheckbox from 'rn-round-checkbox';
 
+import { connect } from 'react-redux'
+import {toogleTask, delTask} from '../actions'
+
 import { categoryShopping, categoryTodo, categoryBirthday, categoryEvent, categoryPersonal, calendarHighlight } from '../styles'
 
 class ItemTask extends Component {
-  state = {}
+  state = {
+    taskDone: this.props.item.isDone
+  }
 
   chooseColorByCategory = () => {
     switch (this.props.item.category) {
@@ -19,15 +24,40 @@ class ItemTask extends Component {
       case 'Personal': return categoryPersonal
     }
   }
+
+  deleteTask = () => {
+    this.props.delTask({
+      dayId: this.props.dayId,
+      taskId: this.props.item.id
+  })
+}
+
   render() {
     return (
       <View style={styles.container}>
         <RoundCheckbox
           checked={this.state.taskDone}
-          onValueChange={(newValue) => this.setState({ taskDone: newValue })}
+          //onValueChange={(newValue) => this.setState({ taskDone: newValue })}
+          onValueChange={(newValue) => {
+            this.setState({ taskDone: newValue })
+            this.props.toogleTask(
+              {
+                //dayId: Math.floor(this.props.item.id / (24 * 60 * 60 * 1000)),
+                dayId: this.props.dayId,
+                taskId: this.props.item.id
+              }
+            )
+          }}
           backgroundColor={calendarHighlight} />
         <Text style={styles.time}>{this.props.item.time}</Text>
-        <TouchableOpacity style={[styles.task, { backgroundColor: this.chooseColorByCategory() }]}>
+        <TouchableOpacity
+          style={[
+            styles.task,
+            { backgroundColor: this.props.item.isDone ? 'gray' : this.chooseColorByCategory() },
+        
+          ]}
+          onLongPress={this.deleteTask}
+        >
           <Text style={styles.content}>{this.props.item.content}</Text>
           <Text style={styles.category}>{this.props.item.category}</Text>
         </TouchableOpacity>
@@ -68,4 +98,5 @@ const styles = StyleSheet.create({
   }
 })
 
-export default ItemTask;
+//export default ItemTask;
+export default connect(null, { toogleTask, delTask })(ItemTask);
