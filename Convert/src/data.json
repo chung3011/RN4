@@ -1,0 +1,36 @@
+{
+    "lenght": [
+        {
+            "value": 1,
+            "name": "milimetre",
+            "color": "#ff8000"
+        },
+        {
+            "value": 10,
+            "name": "centimetre",
+            "color": "#ffa64d"
+        },
+        {
+            "value": 100,
+            "name": "decimetre",
+            "color": "#ff8000"
+        },
+        {
+            "value": 1000,
+            "name": "metre",
+            "color": "#ffa64d"
+        }
+    ],
+    "weight": [
+        {
+            "value": 1,
+            "name": "gram",
+            "color": "#ff8000"
+        },
+        {
+            "value": 1000,
+            "name": "kilogram",
+            "color": "#ffa64d"
+        }
+    ]
+}
