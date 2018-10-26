@@ -5,12 +5,12 @@ import Button from 'react-native-button'
 export default class WeatherDetail extends Component {
     state = {
         uriImage: "https://github.com/chung3011/RN4/blob/master/App2/img/clear.png?raw=true",
-        temp: Math.floor(this.props.weather[0].main.temp) - 273,
-        doC: true
+        // temp: Math.floor(this.props.weather[0].main.temp) - 273,
+        // doC: true
     }
-    _changeTemp = () => {
-        this.state.doC ? this.setState({ temp: Math.floor(this.state.temp * 1.8 + 32), doC: false }) : this.setState({ temp: Math.floor(this.state.temp / 1.8 - 32 / 1.8), doC: true })
-    }
+    // _changeTemp = () => {
+    //     this.state.doC ? this.setState({ temp: Math.floor(this.state.temp * 1.8 + 32), doC: false }) : this.setState({ temp: Math.floor(this.state.temp / 1.8 - 32 / 1.8), doC: true })
+    // }
     componentWillMount() {
         switch (this.props.weather[0].weather[0].main) {
             case 'Clear':
@@ -29,18 +29,18 @@ export default class WeatherDetail extends Component {
     }
     render() {
         return (
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{ flexDirection: 'row'}}>
                 <View style={{ flex: 1, alignItems: "center" }}>
                     <Image
                         style={{ width: 140, height: 140 }}
                         source={{ uri: this.state.uriImage }}
                     />
-                    <Text style={{ fontSize: 30, color: 'white' }}>{this.props.weather[0].weather[0].description}</Text>
+                    <Text style={{ fontSize: 25, color: 'white', marginTop:5 }}>{this.props.weather[0].weather[0].description}</Text>
                 </View>
-                <View style={{ flex: 1, flexDirection: 'column', alignItems: "center" }}>
+                <View style={{ flex: 1, flexDirection: 'column', alignItems: "center", marginLeft:30 }}>
 
-                    <Text style={{ fontWeight: '400', fontSize: 110, color: 'white' }}>{this.state.temp}</Text>
-                    <View style={{ flexDirection: 'row' }}>
+                    <Text style={{ fontWeight: '400', fontSize: 110, color: 'white' }}>{Math.floor(this.props.weather[0].main.temp) - 273}</Text>
+                    {/* <View style={{ flexDirection: 'row' }}>
                         <Button style={{ backgroundColor: '#39354C', color: 'gray', fontSize: 22, fontWeight: '100', marginRight: 5 }}
                             onPress={this._changeTemp}
                             disabled={this.state.doC}
@@ -51,7 +51,8 @@ export default class WeatherDetail extends Component {
                             disabled={!this.state.doC}
                             styleDisabled={{ color: 'white' }}
                         >°F</Button>
-                    </View>
+                    </View> */}
+                    <Text style={{ backgroundColor: '#39354C', color: 'gray', fontSize: 22, fontWeight: '100', marginRight: 5 }}>°C</Text>
                 </View>
             </View>
         )

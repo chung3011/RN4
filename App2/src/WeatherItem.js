@@ -16,6 +16,9 @@ export default class WeatherItem extends Component {
             case 'Clouds':
                 this.setState({ uriImage: "https://github.com/chung3011/RN4/blob/master/App2/img/clouds.png?raw=true" })
                 break;
+            case 'few clouds':
+                this.setState({ uriImage: "https://github.com/chung3011/RN4/blob/master/App2/img/clouds.png?raw=true" })
+                break;
             case 'Snow':
                 this.setState({ uriImage: "https://github.com/chung3011/RN4/blob/master/App2/img/snow.png?raw=true" })
                 break;
@@ -25,7 +28,7 @@ export default class WeatherItem extends Component {
         return (
             <View style={styles.overview}>
                 <View style={{ flex: 2, justifyContent: 'center' }}>
-                    <Text style={{ color: 'white', fontSize: 18, marginLeft: 10 }}>{this.props.weather.dt_txt.substring(0, 10)}</Text>
+                    <Text style={{ color: 'white', fontSize: 18, marginLeft: 10 }}>{this.props.weather.dt_txt}</Text>
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: "center" }}>
@@ -44,7 +47,7 @@ const styles = StyleSheet.create({
     overview: {
         flexDirection: 'row',
         backgroundColor: '#2E2B3E',
-        width: Dimensions.get('window').width*0.8,
+        width: Dimensions.get('window').width * 0.8,
         height: 70,
         borderRadius: 5,
         marginTop: 12

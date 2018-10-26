@@ -15,6 +15,9 @@ import ScheduleScreen from './ScheduleScreen';
 import AddTaskScreen from './AddTaskScreen';
 import { calendarHighlight } from '../styles'
 
+import { YellowBox } from 'react-native';
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
+
 const Navigation = createStackNavigator({
   Schedule: {
     screen: ScheduleScreen,

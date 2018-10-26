@@ -6,6 +6,9 @@ import Orientation from 'react-native-orientation';
 import ComicListScreen from './ComicListScreen';
 import ComicDetailScreen from './ComicDetailScreen';
 
+import { YellowBox } from 'react-native';
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
+
 const Navigation = createStackNavigator({
   ComicList: {
     screen: ComicListScreen,
