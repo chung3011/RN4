@@ -20,14 +20,14 @@ class MenuItem extends Component {
                     <Text style={styles.name}>{this.props.item.name}</Text>
                 </View>
 
-                <Text style={styles.price}>{this.props.item.price}</Text>
+                <Text style={styles.price}>{`${this.props.item.price}$`}</Text>
                 <TouchableOpacity style={styles.button}
                     onPress={() => this.props.addOrder({
                         name: this.props.item.name,
                         unitPrice: this.props.item.price
                     })}
                     >
-                    <Text>Add to cart</Text>
+                    <Text style={{ color: 'white' }} >Add to cart</Text>
                 </TouchableOpacity>
 
             </View>
@@ -48,12 +48,12 @@ const styles = StyleSheet.create({
         borderRadius: 75
     },
     name: {
-        marginTop: 5,
+        marginTop: 8,
         color: primaryColorBrown,
         textAlign: 'center'
     },
     price: {
-        marginTop: 5,
+        marginTop: 10,
         color: primaryColorBrown,
         fontWeight: 'bold',
         fontSize: 20,

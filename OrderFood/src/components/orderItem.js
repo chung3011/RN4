@@ -4,15 +4,20 @@ import {
   View, TouchableOpacity,
 } from 'react-native';
 import { backgroundColor, primaryColorRed, primaryColorGreen, primaryColorBrown } from '../styles'
-
 import Icon from 'react-native-vector-icons/FontAwesome'
+
+import { delOrder } from '../actions'
+import { connect } from 'react-redux'
 
 class OrderItem extends Component {
   state = {  }
   render() {
     return (
         <View style={{flexDirection: 'row', marginVertical:5}}>
-            <TouchableOpacity style={{marginHorizontal: 10}}>
+            <TouchableOpacity
+                style={{ marginHorizontal: 10 }}
+                onPress={() => this.props.delOrder(this.props.item.name)}
+            >
                 <Icon
                     name='trash'
                     size={25}
@@ -27,4 +32,4 @@ class OrderItem extends Component {
   }
 }
 
-export default OrderItem;
+export default connect(null, { delOrder })(OrderItem)

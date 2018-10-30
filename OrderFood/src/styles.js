@@ -16,7 +16,7 @@ export const commonStyles = StyleSheet.create({
     screenTitle: {
         color: primaryColorRed,
         fontWeight: 'bold',
-        fontSize: 30,
+        fontSize: 20,
         marginVertical: 15,
         marginHorizontal: 10
     }

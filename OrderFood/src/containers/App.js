@@ -21,6 +21,7 @@ import TabMenu from './TabMenu';
 import TabOrder from './TabOrder';
 import TabInfo from './TabInfo';
 import TabHistory from './TabHistory';
+import OrderTab from '../components/orderTab';
 import { primaryColorGreen } from '../styles'
 
 import { YellowBox } from 'react-native';
@@ -50,14 +51,7 @@ const BottomTabNavigator = createBottomTabNavigator({
         // You can return any component that you like here! We usually use an
         // icon component from react-native-vector-icons
         // return <Icon name={iconName} size={25} color={tintColor} />;
-        return <View>
-          <Icon name={iconName} size={25} color={tintColor} />
-          {routeName === 'Order' &&
-            <View style={{borderRadius: 20, position: 'absolute', backgroundColor: 'red', width: 20, height: 20, justifyContent: 'center', alignItems:'center',left:18,bottom:7}}>
-              <Text style={{color:'white', fontSize: 12}}>2</Text>
-            </View>
-          }
-        </View>
+        return <OrderTab iconName={iconName} tintColor={tintColor} routeName={routeName} />
       },
     }),
     tabBarOptions: {
@@ -73,7 +67,6 @@ const BottomTabNavigator = createBottomTabNavigator({
 
 const SwitchNavigation = createSwitchNavigator({
   HomeScreen: BottomTabNavigator,
-
   SplashScreen: SplashScreen,
   LoginScreen: LoginScreen,
 })

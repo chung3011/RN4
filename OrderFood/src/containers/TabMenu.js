@@ -29,7 +29,7 @@ class TabMenu extends Component {
         <TouchableOpacity
             onPress={() => this.setState({ currentCategory: item },()=>this.loadData())}
         >
-            <Text style={[styles.textCategory, { color: this.state.currentCategory === item ? primaryColorRed : primaryColorGreen }]}>{item}</Text>
+            <Text style={[commonStyles.screenTitle, { color: this.state.currentCategory === item ? primaryColorRed : primaryColorGreen }]}>{item}</Text>
         </TouchableOpacity>
     )
 
