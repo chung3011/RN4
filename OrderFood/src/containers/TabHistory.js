@@ -13,34 +13,48 @@ class TapHistory extends Component {
     state = {
         activeSections: [],
         history: [{
-            "date" : "Sat Aug 11 2018 12:58:29 ",
-            "onGoing" : false,
-            "orders" : [ {
-              "amount" : 3,
-              "dish" : "Crispy onion rings cheese",
-              "key" : 100,
-              "unitPrice" : 20
+            "date": "Sat Aug 11 2018 12:58:29 ",
+            "onGoing": false,
+            "orders": [{
+                "amount": 3,
+                "dish": "Crispy onion rings cheese",
+                "key": 100,
+                "unitPrice": 20
             }, {
-              "amount" : 1,
-              "dish" : "Beef with hummus and french-fried onion",
-              "key" : 101,
-              "unitPrice" : 17
-            } ]
-          }, {
-            "date" : "Tue Aug 14 2018 10:09:19 ",
-            "onGoing" : true,
-            "orders" : [ {
-              "amount" : 3,
-              "dish" : "Margherita maison",
-              "key" : 200,
-              "unitPrice" : 25
+                "amount": 1,
+                "dish": "Beef with hummus and french-fried onion",
+                "key": 101,
+                "unitPrice": 17
+            }]
+        }, {
+            "date": "Tue Aug 14 2018 10:09:19 ",
+            "onGoing": true,
+            "orders": [{
+                "amount": 3,
+                "dish": "Margherita maison",
+                "key": 200,
+                "unitPrice": 25
             }, {
-              "amount" : 2,
-              "dish" : "Cheese & pepperoni",
-              "key" : 203,
-              "unitPrice" : 22
-            } ]
-          }]
+                "amount": 2,
+                "dish": "Cheese & pepperoni",
+                "key": 203,
+                "unitPrice": 22
+            }]
+        }],
+        data: [],
+    }
+    componentDidMount() {
+        this.loadData()
+    }
+    loadData() {
+        firebase.database().ref(`/users`)
+            .child(firebase.auth().currentUser.uid)
+            .child('history')
+            .on('value', res => this.setState({
+                
+                // data: res._value.filter(order => order.onGoing == true),
+            }))
+
     }
 
     renderHeader(sections) {
@@ -73,26 +87,10 @@ class TapHistory extends Component {
     }
 
 
-    renderOngoingList() {
+    renderOnGoing() {
         return (
             <View>
                 <Text style={styles.title}>On going</Text>
-                <Accordion
-                    underlayColor={'white'}
-                    activeSections={this.state.activeSections}
-                    sections={this.state.history}
-                    renderHeader={this.renderHeader}
-                    renderContent={this.renderContent}
-                    onChange={(activeSections) => this.setState({ activeSections })}
-                />
-            </View>
-        )
-    }
-
-    renderFinishedList() {
-        return (
-            <View>
-                <Text style={styles.title}>Finished</Text>
                 <Accordion
                     underlayColor={'white'}
                     activeSections={this.state.activeSections}
@@ -109,7 +107,7 @@ class TapHistory extends Component {
         return (
             <View style={commonStyles.screenContainer}>
                 <Text style={commonStyles.screenTitle}>History</Text>
-                {this.renderOngoingList()}
+                {this.renderOnGoing()}
             </View>
         );
     }
