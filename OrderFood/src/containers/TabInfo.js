@@ -4,13 +4,17 @@ import {
     View,
     StyleSheet
 } from 'react-native';
-import { primaryColorRed } from '../styles'
+import { backgroundColor, primaryColorRed, primaryColorGreen, commonStyles } from '../styles'
+import InfoItem from '../components/infoItem';
 class TabInfo extends Component {
     state = {}
     render() {
         return (
-            <View>
-                <Text style={styles.titleStyle}>Infomation</Text>
+            <View style={commonStyles.screenContainer}>
+                <Text style={commonStyles.screenTitle}>Infomation</Text>
+                <InfoItem type={'displayName'} iconName={'user'} />
+                <InfoItem type={'address'} iconName={'location-arrow'} />
+                <InfoItem type={'phoneNumber'} iconName={'phone'}/>
             </View>
         );
     }

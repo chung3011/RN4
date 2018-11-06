@@ -16,8 +16,17 @@ export const commonStyles = StyleSheet.create({
     screenTitle: {
         color: primaryColorRed,
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 25,
         marginVertical: 15,
-        marginHorizontal: 10
+        marginHorizontal: 15
+    },
+    confirmButton: {
+        position: 'absolute',
+        bottom: 16,
+        alignSelf: 'center',
+        borderRadius: 15,
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        marginVertical: 10
     }
 })

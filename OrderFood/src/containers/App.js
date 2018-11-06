@@ -66,9 +66,9 @@ const BottomTabNavigator = createBottomTabNavigator({
 )
 
 const SwitchNavigation = createSwitchNavigator({
-  HomeScreen: BottomTabNavigator,
   SplashScreen: SplashScreen,
   LoginScreen: LoginScreen,
+  HomeScreen: BottomTabNavigator,
 })
 
 

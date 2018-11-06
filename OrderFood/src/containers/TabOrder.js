@@ -6,9 +6,11 @@ import {
     FlatList, TouchableOpacity
 } from 'react-native';
 import { backgroundColor, primaryColorRed, primaryColorGreen, primaryColorBrown, commonStyles } from '../styles'
-
+import firebase from 'react-native-firebase'
+import { cleanOrder } from '../actions'
 import OrderItem from '../components/orderItem'
 import { connect } from 'react-redux'
+
 class TabOrder extends Component {
     state = {
 
@@ -18,11 +20,11 @@ class TabOrder extends Component {
 
     renderOrders = () =>
         <FlatList
-        style={{ flexGrow: 0, }}
-        data={this.props.order}
-        renderItem={({ item }) => <OrderItem item={item}></OrderItem>}
-        keyExtractor={(item) => item.name}
-    />
+            style={{ flexGrow: 0, }}
+            data={this.props.order}
+            renderItem={({ item }) => <OrderItem item={item}></OrderItem>}
+            keyExtractor={(item) => item.name}
+        />
 
     total() {
         let total = 0
@@ -43,23 +45,33 @@ class TabOrder extends Component {
 
     </View>
 
-    
+    confirmOrder = () => {
 
-    renderConfirm = () => <TouchableOpacity
-        style={{
-            position: 'absolute',
-            bottom: 16,
-            alignSelf: 'center',
-            backgroundColor: primaryColorRed,
-            borderRadius: 15,
-            paddingHorizontal: 20,
-            paddingVertical: 10,
-            marginVertical: 10
-        }}
-        onPress={this.confirmOrder}
-    >
-        <Text style={{ color: 'white' }}>Confirm</Text>
-    </TouchableOpacity>
+        firebase.database().ref(`/users`)
+            .child(firebase.auth().currentUser.uid)
+            .child('history')
+            .push()
+            .set({
+                date: new Date().toDateString(),
+                onGoing: true,
+                order: this.props.order
+            })
+        this.props.cleanOrder()
+    }
+
+    renderConfirm = () => (this.props.order.length !== 0
+        ? <TouchableOpacity
+            style={[commonStyles.confirmButton, { backgroundColor: primaryColorRed }]}
+            onPress={this.confirmOrder}
+        >
+            <Text style={{ color: 'white' }}>Confirm</Text>
+        </TouchableOpacity>
+        : <TouchableOpacity
+            style={[commonStyles.confirmButton, { backgroundColor: 'gray' }]}
+        >
+            <Text style={{ color: 'white' }}>Confirm</Text>
+        </TouchableOpacity>
+    )
 
     render() {
         return (
@@ -77,4 +89,4 @@ class TabOrder extends Component {
 
 // export default TabOrder;
 const mapStateToProps = ({ order }) => ({ order })
-export default connect(mapStateToProps)(TabOrder);
+export default connect(mapStateToProps, { cleanOrder })(TabOrder)

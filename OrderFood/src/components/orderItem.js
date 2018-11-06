@@ -13,8 +13,9 @@ class OrderItem extends Component {
   state = {  }
   render() {
     return (
-        <View style={{flexDirection: 'row', marginVertical:5}}>
-            <TouchableOpacity
+        <View style={{ flexDirection: 'row', marginVertical: 5 }}>
+            {!this.props.historyMode &&
+                <TouchableOpacity
                 style={{ marginHorizontal: 10 }}
                 onPress={() => this.props.delOrder(this.props.item.name)}
             >
@@ -24,9 +25,11 @@ class OrderItem extends Component {
                     color= {primaryColorGreen}
                 />
             </TouchableOpacity>
+            }
+            
             <Text style={{ fontWeight: 'bold', fontSize: 18, marginHorizontal: 8, color: primaryColorGreen }}>{this.props.item.amount}</Text>
             <Text style={{ fontWeight: 'bold', fontSize: 18, marginHorizontal: 8, flex: 1 ,color: primaryColorBrown }}>{this.props.item.name}</Text>
-            <Text style={{ fontWeight: 'bold', fontSize: 18, marginHorizontal: 8, marginVertical:5 , color: primaryColorGreen}}>{`${this.props.item.unitPrice * this.props.item.amount}$`}</Text>
+            <Text style={{ fontWeight: 'bold', fontSize: 18, marginHorizontal: 8, color: primaryColorGreen}}>{`${this.props.item.unitPrice * this.props.item.amount}$`}</Text>
         </View>
     );
   }
